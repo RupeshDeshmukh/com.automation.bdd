@@ -11,13 +11,13 @@ import cucumber.api.junit.Cucumber;
  * <ul>
  * <li>Refer to <code>com.automation.bdd.SearchStepDefinitions</code> for step
  * definitions.</li>
- * <li>Refer to <code>com.automation.bdd.Search.feature</code> for related feature
- * file.</li>
+ * <li>Refer to <code>com.automation.bdd.Search.feature</code> for related
+ * feature file.</li>
  * </ul>
  * 
  * @author Rupesh Deshmukh
  */
 @RunWith(Cucumber.class)
-@CucumberOptions(format = {"pretty", "html:target/html"}, monochrome = true, features = {"src/test/resources/"})
+@CucumberOptions(plugin = {"pretty", "html:target/html"}, monochrome = true, features = {"src/test/resources/"})
 public class BDDBasicExample {
 }
