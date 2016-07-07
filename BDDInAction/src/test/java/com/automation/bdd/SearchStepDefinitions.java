@@ -4,10 +4,6 @@ import static org.fest.assertions.api.Assertions.assertThat;
 import static org.fest.assertions.api.Fail.fail;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import com.automation.bdd.SearchQueryPage;
-import com.automation.bdd.SearchResultPage;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -34,7 +30,7 @@ public class SearchStepDefinitions {
      */
     @Before({"@requires_browser"})
     public void buildDriver() {
-        this.driver = new FirefoxDriver();
+        this.driver = WebDriverFactory.createWebDriver();
     }
 
     /**
