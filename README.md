@@ -16,6 +16,7 @@ This is a simple example to demostrate BDD using Cucumber and Selenium.
 <ul>
 <li>Cucumber JVM 1.2.3</li>
 <li>Selenium Web Driver 2.48.2</li>
+</ul>
 </p>
 
 <p>
