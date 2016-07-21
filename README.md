@@ -9,11 +9,17 @@
 </p>
 
 <h2>BDDInAction</h2>
-This is a simple example to demostrate BDD using Selenium.
+This is a simple example to demostrate BDD using Cucumber and Selenium.
 
 <p>
 <strong>Technologies Used:</strong>
 <ul>
 <li>Cucumber JVM 1.2.3</li>
 <li>Selenium Web Driver 2.48.2</li>
+</p>
+
+<p>
+<strong>Running this example:</strong>
+1. Using Eclipse - Cucumber Plugin (https://cucumber.io/cucumber-eclipse//update-site)
+2. Using Cucumber JUnit Runner (BDDBasicExampleTest.java)
 </p>
