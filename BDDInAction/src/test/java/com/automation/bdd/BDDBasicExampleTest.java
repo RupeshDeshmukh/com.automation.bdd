@@ -18,6 +18,6 @@ import cucumber.api.junit.Cucumber;
  * @author Rupesh Deshmukh
  */
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin = {"pretty", "html:target/html"}, monochrome = true, features = {"src/test/resources/"})
+@CucumberOptions(plugin = {"pretty", "html:target/html"}, monochrome = false, features = {"src/test/resources/"})
 public class BDDBasicExampleTest {
 }
