@@ -1,3 +1,6 @@
+/*
+ * Copyright: 2013, Atos HTTS.
+ */
 package com.automation.bdd;
 
 import org.openqa.selenium.WebDriver;
