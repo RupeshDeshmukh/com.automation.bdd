@@ -3,6 +3,8 @@
  */
 package com.automation.bdd;
 
+import static com.automation.bdd.WebDriverFactory.TIME_OUT_IN_SECONDS;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,7 +38,7 @@ public class SearchQueryPage {
     public SearchQueryPage(final WebDriver driver) {
 
         this.driver = driver;
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 30), this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIME_OUT_IN_SECONDS), this);
     }
 
     /**

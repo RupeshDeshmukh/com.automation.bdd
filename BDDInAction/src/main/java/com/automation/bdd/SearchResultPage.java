@@ -1,7 +1,9 @@
 /*
- * Copyright: 2013, Atos HTTS.
+ * Copyright (C) 2013, Atos HTTS.
  */
 package com.automation.bdd;
+
+import static com.automation.bdd.WebDriverFactory.TIME_OUT_IN_SECONDS;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +12,7 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.LoggerFactory;;
 
 /**
  * Helper class to manage search result page.
@@ -36,9 +38,9 @@ public class SearchResultPage {
 
         this.driver = driver;
 
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 30), this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIME_OUT_IN_SECONDS), this);
 
-        new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#search li")));
+        new WebDriverWait(driver, TIME_OUT_IN_SECONDS).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#search li")));
     }
 
     /**

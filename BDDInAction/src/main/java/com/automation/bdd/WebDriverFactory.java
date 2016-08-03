@@ -15,6 +15,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public final class WebDriverFactory {
 
     /**
+     * Constant to indicate time out for page load by web driver.
+     */
+    public static final int TIME_OUT_IN_SECONDS = 30;
+
+    /**
      * Utility class should not have default or public constructor.
      */
     private WebDriverFactory() {
@@ -36,7 +41,7 @@ public final class WebDriverFactory {
             case "Chrome":
                 return new ChromeDriver();
             default:
-                throw new RuntimeException("Unsupported browser type : " + browserName);
+                throw new UnsupportedOperationException("Unsupported browser type : " + browserName);
         }
     }
 }
