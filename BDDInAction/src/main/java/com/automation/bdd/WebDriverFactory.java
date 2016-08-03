@@ -15,6 +15,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public final class WebDriverFactory {
 
     /**
+     * Utility class should not have default or public constructor.
+     */
+    private WebDriverFactory() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Method to create web driver based on the browser name passed.
      * 
      * @return <code>org.openqa.selenium.WebDriver</code>.

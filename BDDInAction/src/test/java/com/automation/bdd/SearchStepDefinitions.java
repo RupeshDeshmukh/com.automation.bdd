@@ -54,8 +54,8 @@ public class SearchStepDefinitions {
     }
 
     /**
-     * Method to mapping to when statement
-     * "I enter the search term \"([^\"]*)\"$".
+     * Method to mapping to when statement "I enter the search term
+     * \"([^\"]*)\"$".
      * 
      * @throws Throwable
      */
@@ -73,8 +73,8 @@ public class SearchStepDefinitions {
     }
 
     /**
-     * Method to mapping to And statement
-     * "I submit the search by pressing \"([^\"]*)\"$".
+     * Method to mapping to And statement "I submit the search by pressing
+     * \"([^\"]*)\"$".
      * 
      * @throws Throwable
      */
@@ -129,8 +129,8 @@ public class SearchStepDefinitions {
     private void verifyCurrentPage(final Class pageClass) {
 
         if (!this.currentPage.getClass().equals(pageClass)) {
-            fail(String.format("Expected current page to have type %s - actual type is %s", pageClass.getSimpleName(), this.currentPage.getClass()
-                            .getSimpleName()));
+            fail(String.format("Expected current page to have type %s - actual type is %s", pageClass.getSimpleName(),
+                            this.currentPage.getClass().getSimpleName()));
         }
     }
 }

@@ -16,13 +16,13 @@ public class SearchQueryPage {
     private final WebDriver driver;
 
     @FindBy(css = "input[name=q]")
-    WebElement query;
+    private WebElement query;
 
     @FindBy(css = "input[value=\"Google Search\"]")
-    WebElement searchButton;
+    private WebElement searchButton;
 
     @FindBy(css = "input[value=\"I'm Feeling Lucky\"]")
-    WebElement luckyButton;
+    private WebElement luckyButton;
 
     /**
      * Constructor to load the web driver for the google search page.
@@ -62,7 +62,7 @@ public class SearchQueryPage {
 
         // Clear the search criteria field.
         this.query.clear();
-        
+
         this.query.sendKeys(term);
 
         return this;
