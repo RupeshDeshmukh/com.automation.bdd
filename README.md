@@ -28,11 +28,11 @@ This is a simple example to demostrate BDD using Cucumber and Selenium.
 </p>
 
 <p>
-<strong>Note:</strong>
+<strong>Note:</strong><br />
 By default this example uses Firefox Browser to launch the test. If you want to run this example using Chrome Browser then you will have to follow below steps:
 <ol>
 <li>Download Chrome Driver from https://sites.google.com/a/chromium.org/chromedriver/downloads and place exe in some directory of your choice.</li>
 <li>While running the test you will have to pass two arguments: -Dbrowser=Chrome -Dwebdriver.chrome.driver="location of chromedriver.exe"</li>
 </ol>
 </p>
-</p?
+
