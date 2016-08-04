@@ -57,6 +57,8 @@ public class SearchStepDefinitions {
      * Method to mapping to when statement "I enter the search term
      * \"([^\"]*)\"$".
      * 
+     * @param term
+     *            String.
      * @throws Throwable
      */
     @When("^I enter the search term \"([^\"]*)\"$")
@@ -76,6 +78,8 @@ public class SearchStepDefinitions {
      * Method to mapping to And statement "I submit the search by pressing
      * \"([^\"]*)\"$".
      * 
+     * @param submitType
+     *            String.
      * @throws Throwable
      */
     @And("^I submit the search by pressing \"([^\"]*)\"$")
@@ -124,6 +128,7 @@ public class SearchStepDefinitions {
      * Method to verify what is the current page.
      * 
      * @param pageClass
+     *            Class.
      */
     @SuppressWarnings("rawtypes")
     private void verifyCurrentPage(final Class pageClass) {

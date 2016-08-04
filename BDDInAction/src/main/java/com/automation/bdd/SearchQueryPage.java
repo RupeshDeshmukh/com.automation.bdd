@@ -46,7 +46,7 @@ public class SearchQueryPage {
      * 
      * @param driver
      *            <code>org.openqa.selenium.WebDriver</code>.
-     * @return <code>net.wl.selenium.SearchQueryPage</code>.
+     * @return <code>com.automation.bdd.SearchQueryPage</code>.
      */
     public static SearchQueryPage loadUsing(final WebDriver driver) {
 
@@ -61,7 +61,7 @@ public class SearchQueryPage {
      * 
      * @param term
      *            String to be searched.
-     * @return <code>net.wl.selenium.SearchQueryPage</code>.
+     * @return <code>com.automation.bdd.SearchQueryPage</code>.
      */
     public SearchQueryPage setQuery(final String term) {
 
@@ -76,7 +76,7 @@ public class SearchQueryPage {
     /**
      * Method to send enter key in the search.
      * 
-     * @return <code>net.wl.selenium.SearchResultPage</code>.
+     * @return <code>com.automation.bdd.SearchResultPage</code>.
      */
     public SearchResultPage pressEnterInQuery() {
 
@@ -88,7 +88,7 @@ public class SearchQueryPage {
     /**
      * Method to click the "Google Search" button on google search page.
      * 
-     * @return <code>net.wl.selenium.SearchResultPage</code>.
+     * @return <code>com.automation.bdd.SearchResultPage</code>.
      */
     public SearchResultPage clickSearchButton() {
 
@@ -100,7 +100,7 @@ public class SearchQueryPage {
     /**
      * Method to click the "I'm Feeling Lucky" button on google search page.
      * 
-     * @return <code>net.wl.selenium.SearchResultPage</code>.
+     * @return <code>com.automation.bdd.SearchResultPage</code>.
      */
     public SearchResultPage clickLuckyButton() {
 
