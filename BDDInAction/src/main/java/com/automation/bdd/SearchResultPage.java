@@ -29,7 +29,7 @@ public class SearchResultPage {
     private final WebDriver driver;
 
     /**
-     * Constructor to initialise the web driver for the search result page.
+     * Constructor to initialize the web driver for the search result page.
      * 
      * @param driver
      *            <code>org.openqa.selenium.WebDriver</code>.
