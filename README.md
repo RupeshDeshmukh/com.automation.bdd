@@ -22,7 +22,7 @@ This is a simple example to demostrate BDD using Cucumber and Selenium.
 <p>
 <strong>Running this example:</strong>
 <ol>
-<li>Using Eclipse - Cucumber Plugin (https://cucumber.io/cucumber-eclipse//update-site)</li>
+<li>Using Eclipse - Cucumber Plugin (https://cucumber.io/cucumber-eclipse/update-site)</li>
 <li>Using Cucumber JUnit Runner (BDDBasicExampleTest.java)</li>
 </ol>
 </p>
