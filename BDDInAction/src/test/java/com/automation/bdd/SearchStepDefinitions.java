@@ -5,7 +5,6 @@ import static org.fest.assertions.api.Fail.fail;
 
 import org.openqa.selenium.WebDriver;
 
-import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -30,15 +29,7 @@ public class SearchStepDefinitions {
      */
     @Before({"@requires_browser"})
     public void buildDriver() {
-        this.driver = WebDriverFactory.createWebDriver();
-    }
-
-    /**
-     * Close the driver once the test is finished.
-     */
-    @After({"@requires_browser"})
-    public void destroyDriver() {
-        this.driver.quit();
+        this.driver = WebDriverFactory.getWebDriverInstance();
     }
 
     /**
