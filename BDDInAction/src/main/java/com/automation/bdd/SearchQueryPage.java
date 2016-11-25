@@ -35,9 +35,9 @@ public class SearchQueryPage {
      * @param driver
      *            <code>org.openqa.selenium.WebDriver</code>.
      */
-    public SearchQueryPage(final WebDriver driver) {
+    public SearchQueryPage() {
 
-        this.driver = driver;
+        this.driver = WebDriverFactory.getWebDriverInstance();
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIME_OUT_IN_SECONDS), this);
     }
 
@@ -46,14 +46,11 @@ public class SearchQueryPage {
      * 
      * @param driver
      *            <code>org.openqa.selenium.WebDriver</code>.
-     * @return <code>com.automation.bdd.SearchQueryPage</code>.
      */
-    public static SearchQueryPage loadUsing(final WebDriver driver) {
+    public static void loadPage(final WebDriver driver) {
 
         // Navigate to google page.
         driver.get("https://www.google.co.in/");
-
-        return new SearchQueryPage(driver);
     }
 
     /**
@@ -82,7 +79,7 @@ public class SearchQueryPage {
 
         this.query.sendKeys("\n");
 
-        return new SearchResultPage(this.driver);
+        return new SearchResultPage();
     }
 
     /**
@@ -94,7 +91,7 @@ public class SearchQueryPage {
 
         this.searchButton.click();
 
-        return new SearchResultPage(this.driver);
+        return new SearchResultPage();
     }
 
     /**
@@ -106,6 +103,6 @@ public class SearchQueryPage {
 
         this.luckyButton.click();
 
-        return new SearchResultPage(this.driver);
+        return new SearchResultPage();
     }
 }

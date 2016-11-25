@@ -7,6 +7,7 @@ import static com.automation.bdd.WebDriverFactory.TIME_OUT_IN_SECONDS;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,18 +30,15 @@ public class SearchResultPage {
     private final WebDriver driver;
 
     /**
-     * Constructor to initialize the web driver for the search result page.
-     * 
-     * @param driver
-     *            <code>org.openqa.selenium.WebDriver</code>.
+     * Constructor to initialise the web driver for the search result page.
      */
-    public SearchResultPage(final WebDriver driver) {
+    public SearchResultPage() {
 
-        this.driver = driver;
+        this.driver = WebDriverFactory.getWebDriverInstance();
 
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIME_OUT_IN_SECONDS), this);
-        
-        final WebDriverWait webDriverWait =  new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
+
+        final WebDriverWait webDriverWait = new WebDriverWait(driver, TIME_OUT_IN_SECONDS);
 
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#search li")));
     }
@@ -57,5 +55,17 @@ public class SearchResultPage {
         LOGGER.info(title);
 
         return title.substring(0, title.indexOf(" - "));
+    }
+
+    /**
+     * Method to get the result.
+     * 
+     * @return String.
+     */
+    public String getResult() {
+
+        final WebElement calculatorTextBox = this.driver.findElement(By.id("cwos"));
+
+        return calculatorTextBox.getText();
     }
 }
