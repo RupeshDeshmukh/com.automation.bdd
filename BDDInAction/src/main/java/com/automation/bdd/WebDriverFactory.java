@@ -114,8 +114,12 @@ public final class WebDriverFactory {
      */
     private static WebDriver createChromeDriver() {
 
-        // For chrome we have to specify the path for external chrome driver.
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        if (System.getProperty("webdriver.chrome.driver") == null) {
+
+            // For chrome we have to specify the path for external chrome
+            // driver.
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        }
 
         return new ChromeDriver();
     }
