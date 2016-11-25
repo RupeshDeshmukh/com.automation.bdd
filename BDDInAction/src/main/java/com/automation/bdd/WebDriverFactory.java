@@ -3,14 +3,27 @@
  */
 package com.automation.bdd;
 
+import static org.openqa.selenium.remote.BrowserType.CHROME;
+import static org.openqa.selenium.remote.BrowserType.FIREFOX;
+import static org.openqa.selenium.remote.BrowserType.IEXPLORE;
+import static org.openqa.selenium.remote.BrowserType.SAFARI;
+
+import java.awt.Toolkit;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.UnreachableBrowserException;
+import org.openqa.selenium.safari.SafariDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Factory class for generating web driver for the given browser.
@@ -20,6 +33,11 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public final class WebDriverFactory {
 
     /**
+     * Logger instance for doing logging.
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(WebDriverFactory.class);
+
+    /**
      * Constant to indicate time out for page load by web driver.
      */
     public static final int TIME_OUT_IN_SECONDS = 60;
@@ -27,7 +45,7 @@ public final class WebDriverFactory {
     /**
      * Singleton instance of Selenium Web Driver.
      */
-    private static WebDriver driver;
+    private static WebDriver webDriver;
 
     /**
      * Utility class should not have default or public constructor.
@@ -41,37 +59,85 @@ public final class WebDriverFactory {
      * 
      * @return <code>org.openqa.selenium.WebDriver</code>.
      */
-    public static WebDriver getWebDriverInstance() {
+    public synchronized static WebDriver getWebDriverInstance() {
 
-        final String browserName = System.getProperty("browser", "FireFox");
-
-        if (driver == null) {
-            switch (browserName) {
-                case "Chrome":
-                    driver = new ChromeDriver();
-                    break;
-                case "IE":
-                    driver = new InternetExplorerDriver();
-                    break;
-                case "FireFox":
-                default:
-                    driver = createFireFoxDriver();
-                    break;
+        if (webDriver == null) {
+            try {
+                webDriver = getBrowser();
+            } catch (final UnreachableBrowserException e) {
+                webDriver = getBrowser();
+            } catch (final WebDriverException e) {
+                webDriver = getBrowser();
+            } finally {
+                Runtime.getRuntime().addShutdownHook(new Thread(new BrowserCleanup()));
             }
-
-            // Set the timeout for the pages.
-            driver.manage().timeouts().implicitlyWait(TIME_OUT_IN_SECONDS, TimeUnit.SECONDS);
-
-            // Maximise the browser window by default so that the page has a
-            // standard layout. Individual tests can resize the browser window
-            // if they want to test how the page layout adapts to limited space.
-            // This reduces the probability of a test failure caused by an
-            // unexpected layout (nested scroll bars, floating menu over links
-            // and buttons and so on).
-            driver.manage().window().maximize();
         }
 
+        return webDriver;
+    }
+
+    /**
+     * Method to get the web driver instance based on the asked browser.
+     * 
+     * @return <code>org.openqa.selenium.WebDriver</code>.
+     */
+    private static WebDriver getBrowser() {
+
+        final String browserName = System.getProperty("browser", FIREFOX);
+
+        WebDriver driver;
+        switch (browserName) {
+            case CHROME:
+                driver = createChromeDriver();
+                break;
+            case IEXPLORE:
+                driver = createInternetExplorerDriver();
+                break;
+            case SAFARI:
+                driver = createSafariDriver();
+                break;
+            case FIREFOX:
+            default:
+                driver = createFireFoxDriver();
+                break;
+        }
+
+        addAllBrowserSetup(driver);
+
         return driver;
+    }
+
+    /**
+     * Method to create instance of Chrome web driver.
+     * 
+     * @return <code>org.openqa.selenium.chrome.ChromeDriver</code>.
+     */
+    private static WebDriver createChromeDriver() {
+
+        // For chrome we have to specify the path for external chrome driver.
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+
+        return new ChromeDriver();
+    }
+
+    /**
+     * Method to create instance of Internet Explorer web driver.
+     * 
+     * @return <code>org.openqa.selenium.ie.InternetExplorerDriver</code>.
+     */
+    private static WebDriver createInternetExplorerDriver() {
+
+        return new InternetExplorerDriver();
+    }
+
+    /**
+     * Method to create instance of Safari web driver.
+     * 
+     * @return <code>org.openqa.selenium.safari.SafariDriver</code>.
+     */
+    private static WebDriver createSafariDriver() {
+
+        return new SafariDriver();
     }
 
     /**
@@ -80,14 +146,27 @@ public final class WebDriverFactory {
      * 
      * @return <code>org.openqa.selenium.firefox.FirefoxDriver</code>.
      */
-    private static WebDriver createFireFoxDriver() {
+    private synchronized static WebDriver createFireFoxDriver() {
+
+        final DesiredCapabilities desiredCapabilities = DesiredCapabilities.firefox();
+        desiredCapabilities.setCapability(FirefoxDriver.PROFILE, getFirefoxProfile());
+
+        return new FirefoxDriver(desiredCapabilities);
+    }
+
+    /**
+     * Method to return profile for FireFox.
+     * 
+     * @return <code>org.openqa.selenium.firefox.FirefoxProfile</code>.
+     */
+    private static FirefoxProfile getFirefoxProfile() {
 
         final FirefoxProfile firefoxProfile = new FirefoxProfile();
 
         // Native events may cause tests which open many windows in parallel to
         // be unreliable especially on windows. However, native events work
-        // quite well otherwise and
-        // are essential for some of the new actions of the Advanced User
+        // quite well otherwise and are essential for some of the new actions of
+        // the Advanced User
         // Interaction. We need native events to be enable especially for
         // testing the WYSIWYG editor.
         firefoxProfile.setEnableNativeEvents(false);
@@ -107,9 +186,50 @@ public final class WebDriverFactory {
         firefoxProfile.setPreference("pref.browser.homepage.disable_button.bookmark_page", false);
         firefoxProfile.setPreference("pref.browser.homepage.disable_button.restore_default", false);
 
-        final DesiredCapabilities desiredCapabilities = DesiredCapabilities.firefox();
-        desiredCapabilities.setCapability(FirefoxDriver.PROFILE, firefoxProfile);
+        return firefoxProfile;
+    }
 
-        return new FirefoxDriver(desiredCapabilities);
+    /**
+     * Method to do perform all common configuration for the browser.
+     */
+    private static void addAllBrowserSetup(final WebDriver driver) {
+
+        // Set the timeout for the pages.
+        driver.manage().timeouts().implicitlyWait(TIME_OUT_IN_SECONDS, TimeUnit.SECONDS);
+
+        // Start position of the browser. 0, 0 will open the browser from top
+        // left corner.
+        driver.manage().window().setPosition(new Point(0, 0));
+
+        // Browser window will be adjusted based on the current monitor
+        // resolution.
+        final java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        final Dimension dim = new Dimension((int) screenSize.getWidth(), (int) screenSize.getHeight());
+        driver.manage().window().setSize(dim);
+    }
+
+    /**
+     * Browser clean-up thread class to perform browser closing action.
+     * 
+     * @author a120065
+     */
+    private static class BrowserCleanup implements Runnable {
+        public void run() {
+            close();
+        }
+    }
+
+    /**
+     * Method to close the browser.
+     */
+    public static void close() {
+        try {
+            LOGGER.info("Closing the browser");
+
+            webDriver.quit();
+            webDriver = null;
+        } catch (final UnreachableBrowserException e) {
+            LOGGER.info("Cannot close browser: unreachable browser");
+        }
     }
 }
