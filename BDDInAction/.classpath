@@ -1,36 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" output="target/classes" path="src/main/java">
-		<attributes>
-			<attribute name="optional" value="true"/>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="src" path="src/test/java" output="target/test-classes" including="**/*.java"/>
+  <classpathentry kind="src" path="src/test/resources" output="target/test-classes" excluding="**/*.java"/>
+  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
+  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
+  <classpathentry kind="output" path="target/classes"/>
+  <classpathentry kind="var" path="M2_REPO/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+  <classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-java/3.4.0/selenium-java-3.4.0.jar" sourcepath="M2_REPO/org/seleniumhq/selenium/selenium-java/3.4.0/selenium-java-3.4.0-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-api/3.4.0/selenium-api-3.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-chrome-driver/3.4.0/selenium-chrome-driver-3.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-remote-driver/3.4.0/selenium-remote-driver-3.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/cglib/cglib-nodep/3.2.4/cglib-nodep-3.2.4.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-codec/commons-codec/1.10/commons-codec-1.10.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/code/gson/gson/2.8.0/gson-2.8.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/google/guava/guava/21.0/guava-21.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpclient/4.5.3/httpclient-4.5.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpcore/4.4.6/httpcore-4.4.6.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/dev/jna/jna/4.1.0/jna-4.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-edge-driver/3.4.0/selenium-edge-driver-3.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-firefox-driver/3.4.0/selenium-firefox-driver-3.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-ie-driver/3.4.0/selenium-ie-driver-3.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-opera-driver/3.4.0/selenium-opera-driver-3.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-safari-driver/3.4.0/selenium-safari-driver-3.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/selenium-support/3.4.0/selenium-support-3.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/junit/junit/4.12/junit-4.12.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/commons-io/commons-io/2.5/commons-io-2.5.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/w3c/css/sac/1.3/sac-1.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/sourceforge/cssparser/cssparser/0.9.22/cssparser-0.9.22.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/sourceforge/htmlunit/htmlunit/2.26/htmlunit-2.26.jar"/>
+  <classpathentry kind="var" path="M2_REPO/xalan/xalan/2.7.2/xalan-2.7.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/xalan/serializer/2.7.2/serializer-2.7.2.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/apache/httpcomponents/httpmime/4.5.3/httpmime-4.5.3.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/sourceforge/htmlunit/htmlunit-core-js/2.26/htmlunit-core-js-2.26.jar"/>
+  <classpathentry kind="var" path="M2_REPO/net/sourceforge/htmlunit/neko-htmlunit/2.25/neko-htmlunit-2.25.jar"/>
+  <classpathentry kind="var" path="M2_REPO/xerces/xercesImpl/2.11.0/xercesImpl-2.11.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jetty/websocket/websocket-client/9.4.3.v20170317/websocket-client-9.4.3.v20170317.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jetty/jetty-util/9.4.1.v20170120/jetty-util-9.4.1.v20170120.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jetty/jetty-io/9.4.1.v20170120/jetty-io-9.4.1.v20170120.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jetty/jetty-client/9.4.3.v20170317/jetty-client-9.4.3.v20170317.jar" sourcepath="M2_REPO/org/eclipse/jetty/jetty-client/9.4.3.v20170317/jetty-client-9.4.3.v20170317-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jetty/jetty-http/9.4.3.v20170317/jetty-http-9.4.3.v20170317.jar" sourcepath="M2_REPO/org/eclipse/jetty/jetty-http/9.4.3.v20170317/jetty-http-9.4.3.v20170317-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jetty/websocket/websocket-common/9.4.3.v20170317/websocket-common-9.4.3.v20170317.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/eclipse/jetty/websocket/websocket-api/9.4.3.v20170317/websocket-api-9.4.3.v20170317.jar"/>
+  <classpathentry kind="var" path="M2_REPO/com/codeborne/phantomjsdriver/1.4.0/phantomjsdriver-1.4.0.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/seleniumhq/selenium/htmlunit-driver/2.26/htmlunit-driver-2.26.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar" sourcepath="M2_REPO/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-log4j12/1.7.12/slf4j-log4j12-1.7.12.jar" sourcepath="M2_REPO/org/slf4j/slf4j-log4j12/1.7.12/slf4j-log4j12-1.7.12-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17.jar" sourcepath="M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/info/cukes/cucumber-java8/1.2.3/cucumber-java8-1.2.3.jar" sourcepath="M2_REPO/info/cukes/cucumber-java8/1.2.3/cucumber-java8-1.2.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/info/cukes/cucumber-java/1.2.3/cucumber-java-1.2.3.jar" sourcepath="M2_REPO/info/cukes/cucumber-java/1.2.3/cucumber-java-1.2.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/info/cukes/cucumber-core/1.2.3/cucumber-core-1.2.3.jar" sourcepath="M2_REPO/info/cukes/cucumber-core/1.2.3/cucumber-core-1.2.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/info/cukes/cucumber-html/0.2.3/cucumber-html-0.2.3.jar" sourcepath="M2_REPO/info/cukes/cucumber-html/0.2.3/cucumber-html-0.2.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/info/cukes/cucumber-jvm-deps/1.0.5/cucumber-jvm-deps-1.0.5.jar" sourcepath="M2_REPO/info/cukes/cucumber-jvm-deps/1.0.5/cucumber-jvm-deps-1.0.5-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/info/cukes/gherkin/2.12.2/gherkin-2.12.2.jar" sourcepath="M2_REPO/info/cukes/gherkin/2.12.2/gherkin-2.12.2-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/info/cukes/cucumber-junit/1.2.3/cucumber-junit-1.2.3.jar" sourcepath="M2_REPO/info/cukes/cucumber-junit/1.2.3/cucumber-junit-1.2.3-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/easytesting/fest-assert-core/2.0M10/fest-assert-core-2.0M10.jar" sourcepath="M2_REPO/org/easytesting/fest-assert-core/2.0M10/fest-assert-core-2.0M10-sources.jar"/>
+  <classpathentry kind="var" path="M2_REPO/org/easytesting/fest-util/1.2.5/fest-util-1.2.5.jar" sourcepath="M2_REPO/org/easytesting/fest-util/1.2.5/fest-util-1.2.5-sources.jar"/>
 </classpath>
